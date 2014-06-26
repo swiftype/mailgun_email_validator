@@ -4,7 +4,7 @@ module MailgunEmailValidator
   DEFAULT_VALIDATION_OPTIONS = {:on => :save, :allow_nil => false, :allow_blank => false, :message => nil}
 
 
-  MAILGUN_PUBLIC_API = nil
+  MAILGUN_PUBLIC_KEY = nil
 
   def valid_with_mailgun?(email)
     !! parsed_validation_response!(email)["is_valid"]
@@ -43,10 +43,10 @@ module MailgunEmailValidator
   private
 
   def parsed_validation_response!(email)
-    res = RestClient.get "https://api:#{mailgun_public_api}@api.mailgun.net/v2/address/validate", {params: {address: email}}
+    res = RestClient.get "https://api:#{mailgun_public_key}@api.mailgun.net/v2/address/validate", {params: {address: email}}
     JSON.parse(res)
   end
-  def mailgun_public_api
-    MAILGUN_PUBLIC_API || ENV['MAILGUN_PUBLIC_API'] || raise("You need to supply your mailgun public api key")
+  def mailgun_public_key
+    MAILGUN_PUBLIC_KEY || ENV['MAILGUN_PUBLIC_KEY'] || raise("You need to supply your mailgun public api key")
   end
 end

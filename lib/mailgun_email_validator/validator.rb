@@ -3,10 +3,9 @@ require 'rest_client'
 module MailgunEmailValidator
   DEFAULT_VALIDATION_OPTIONS = {:on => :save, :allow_nil => false, :allow_blank => false, :message => nil}
 
-
   MAILGUN_PUBLIC_KEY = nil
 
-  def valid_with_mailgun?(email)
+  def valid_email_with_mailgun?(email)
     !! parsed_validation_response!(email)["is_valid"]
   end
 

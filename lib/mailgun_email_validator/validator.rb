@@ -28,7 +28,7 @@ module MailgunEmailValidator
         return if record.blank?
       else
         begin
-          parsed = parsed_validation_response(value)
+          parsed = parsed_validation_response!(value)
           is_valid = !parsed["is_valid"].nil? ? parsed["is_valid"] : false
           message = options[:message] ? options[:message] : "supplied email is invalid."
           record.errors.add(attr, message) if !is_valid

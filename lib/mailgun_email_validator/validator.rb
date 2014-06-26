@@ -47,6 +47,6 @@ module MailgunEmailValidator
     JSON.parse(res)
   end
   def mailgun_public_api
-    MAILGUN_PUBLIC_API || ENV['MAILGUN_PUBLIC_API']
+    MAILGUN_PUBLIC_API || ENV['MAILGUN_PUBLIC_API'] || raise("You need to supply your mailgun public api key")
   end
 end

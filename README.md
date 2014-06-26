@@ -15,6 +15,7 @@ You'll need to add a ``MAILGUN_PUBLIC_KEY`` environmental variable to your syste
 Alternatively, you can configure mailgun with an initializer:
 
 In ``config/initializers/mailgun_email_validator.rb``:
+
 ``MailgunEmailValidator::MAILGUN_PUBLIC_KEY = 'f23oifj3ojo2j3ofj32ijoj2iojf3iojoi2f32'``
 
 *Note: This is not a real Mailgun public key*
